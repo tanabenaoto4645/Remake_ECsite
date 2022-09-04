@@ -14,8 +14,8 @@
 Route::get('/products', 'ProductController@index');
 
 Route::get('/addProduct', 'ProductController@add');
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/products/{product}', 'ProductController@show');
+Route::get('/categories/{category}', 'CategoryController@index');
 
 Route::post('/addProduct', 'ProductController@store');
 Auth::routes();

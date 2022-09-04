@@ -8,8 +8,14 @@ use App\Product;
 class Category extends Model
 {
     //リレーション
-    public function poducts()
+    public function products()
     {
-        return $this->hasMany('App\Products');  
+        return $this->hasMany('App\Product');  
+    }
+    
+    //カテゴリー別に取得
+    public function getByCategory(int $limit_count=5)
+    {
+        return $this->products()->with('category')->orderBy('updated_at', 'DESC')->paginate($limit_count);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Category;
 use Illuminate\Http\Request;
 use Storage;
 
@@ -15,10 +16,16 @@ class ProductController extends Controller
         return view('index')->with(['products' => $product->getPaginateByLimit()]);
     }
     
-    //商品追加
-    public function add(Product $product)
+    //商品詳細ページ
+    public function show(Product $product)
     {
-        return view('/addProduct');
+        return view('show')->with(['product' => $product]);
+    }
+    
+    //商品追加
+    public function add(Category $category)
+    {
+        return view('/addProduct')->with(['categories' => $category->get()]);
     }
     
     //商品保存
@@ -36,6 +43,6 @@ class ProductController extends Controller
         
         $product->save();
         
-        return redirect('/');
+        return redirect('/products/'.$product->id);
     }
 }

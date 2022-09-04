@@ -32,10 +32,9 @@
             <div class="category">
                 <h2>カテゴリー</h2>
                 <select name="product[category_id]">
-                    
-                    <option value="1">フレア</option>
-                    <option value="2">ワイド</option>
-                    <option value="3">その他</option>
+                    @foreach($categories as $category)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                    @endforeach
                 </select>
             </div>
             
