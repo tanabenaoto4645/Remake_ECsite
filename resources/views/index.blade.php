@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+@extends('layouts.app')　　　　　　　　　　　　　　　　　　
+
+@section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -11,8 +14,10 @@
     </head>
     <body>
         <h1>n rebuilding</h1>
-        <a href="/addProduct">商品追加</a>
-        <div class='posts'>
+        @if($admin==7)
+            <a href="/addProduct">商品追加</a>
+        @endif
+        <div class='products'>
             @foreach($products as $product)
             <div class='product'>
                 <h2 class='image'>
@@ -35,3 +40,4 @@
         </div>
     </body>
 </html>
+@endsection

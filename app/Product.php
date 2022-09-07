@@ -5,6 +5,8 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\category;
 
+
+
 class Product extends Model
 {
     
@@ -23,5 +25,7 @@ class Product extends Model
     {
         return $this->belongsTo('App\Category');
     }
+    
+    
 
 }

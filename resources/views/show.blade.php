@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+@extends('layouts.app')　　　　　　　　　　　　　　　　　　
+
+@section('content')
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
@@ -25,7 +28,8 @@
                 <p class ='price'>{{$product->price}}</p>
                 <p class='detail'>{{$product->detail}}</p>
                 <p class='size'>{{$product->size}}</p>
-                <a href="/categories/{{$product->category_id}}/" class="category">{{$product->category->name}}</a>
+                <a href="/categories/{{$product->category_id}}/" class="category">{{$product->category->name}}</a><br/>
+                <a href="/products/addCart/{{$product->id}}">カートに追加</a>
                 <!--<p class="edit">[<a href="/products/{{ $product->id }}/edit">edit</a>]</p>-->
             </div>
         <div class='footer'>
@@ -33,3 +37,4 @@
         </div>
     </body>
 </html>
+@endsection
