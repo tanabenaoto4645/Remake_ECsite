@@ -4,10 +4,10 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\category;
+use Gloudemans\Shoppingcart\Contracts\Buyable;
 
 
-
-class Product extends Model
+class Product extends Model implements Buyable
 {
     
      protected $fillable = [
@@ -24,6 +24,21 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo('App\Category');
+    }
+    
+    
+    //buyable
+    public function getBuyableIdentifier($options = null) {
+        return $this->id;
+    }
+    public function getBuyableDescription($options = null) {
+        return $this->name;
+    }
+    public function getBuyablePrice($options = null) {
+        return $this->price;
+    }
+    public function getBuyableWeight($option = null) {
+        return 1;
     }
     
     

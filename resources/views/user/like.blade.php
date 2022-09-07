@@ -14,43 +14,35 @@
     </head>
     <body>
         <h1>n rebuilding</h1>
-        <p>カート</p>
-        @if(isset($carts))
+        <p>お気に入り</p>
+        @if(isset($likes))
             <table class="uk-table uk-table-hover uk-table-divider">
                 <thead>
-                    <th>購入商品</th>
+                    <th>お気に入り商品</th>
                     <th></th>
-                    <th>小計</th>
+                    <th></th>
                 </thead>
                 <tbody>
                 <div class='products'>
-                    <?php $total = 0 ?>
-                    @foreach($carts as $cart)
+                    @foreach($likes as $like)
                         <tr>
-                            <td><img src="{{$cart->options->image_path}}" width="50" height="50"></td>
-                            <td>{{$cart->name}}</td>
-                            <td>{{$cart->price}}円</td>
-                            <td><a href="/user/cart/remove/{{$cart->rowId}}"><button class="uk-button uk-button-danger uk-button">削除</button></a></td>
+                            <td><img src="{{$like->options->image_path}}" width="50" height="50"></td>
+                            <td>{{$like->name}}</td>
+                            <td>{{$like->price}}円</td>
+                            <td><a href="/user/like/remove/{{$like->rowId}}"><button class="uk-button uk-button-danger uk-button">削除</button></a></td>
                         </tr>
-                        <?php $total +=  $cart->price ?>
                     @endforeach
                 </div>
                 <div>
                     <tr>
                         <td></td>
-                        <td class="uk-text-large" style="text-align:right;">合計</td>
-                        <td class="uk-text-large">{{$total}}円</td>
-                        <td><a href="/payment">決済</a></td>
-                    </tr>
-                    <tr>
                         <td></td>
-                        <td></td>
-                        <td><td><a href="/user/cart/reset"><button class="uk-button uk-button-danger uk-button">カート全削除</button></a></td></td>
+                        <td><td><a href="/user/like/reset"><button class="uk-button uk-button-danger uk-button">お気に入り全削除</button></a></td></td>
                     </tr>
                 </div>
             </table>
         @else
-            カートの中身はありません。
+            お気に入りの中身はありません。
         @endif
     </body>
 </html>

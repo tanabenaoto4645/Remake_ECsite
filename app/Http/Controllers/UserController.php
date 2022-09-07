@@ -19,16 +19,7 @@ class UserController extends Controller
     
     public function addCart($product_id){
         $product = product::find($product_id);
-        Cart::add([
-            [
-                'id' => $product->id,
-                'name' => $product->name,
-                'qty' => '1',
-                'price' => $product->price,
-                'weight' => '1',
-                'options' => ['image_path'=> $product->image_path]
-                ]
-            ]);
+        Cart::add($product, 1, ['image_path'=> $product->image_path]);
         
         $carts = Cart::content();
         $user_id = Auth::user()->id;
