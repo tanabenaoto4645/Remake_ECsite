@@ -29,6 +29,7 @@
                 <p class='detail'>{{$product->detail}}</p>
                 <p class='size'>{{$product->size}}</p>
                 <a href="/categories/{{$product->category_id}}/" class="category">{{$product->category->name}}</a><br/>
+                <a href="/products/addLike/{{$product->id}}">お気に入りに追加</a>
                 <a href="/products/addCart/{{$product->id}}">カートに追加</a>
                 <!--<p class="edit">[<a href="/products/{{ $product->id }}/edit">edit</a>]</p>-->
             </div>

@@ -29,6 +29,7 @@
                             <td><img src="{{$like->options->image_path}}" width="50" height="50"></td>
                             <td>{{$like->name}}</td>
                             <td>{{$like->price}}円</td>
+                            <td><a href="/products/addCart/{{$like->id}}"><button class="uk-button uk-button-danger uk-button">カートに追加</button></a></td>
                             <td><a href="/user/like/remove/{{$like->rowId}}"><button class="uk-button uk-button-danger uk-button">削除</button></a></td>
                         </tr>
                     @endforeach

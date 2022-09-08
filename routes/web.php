@@ -17,9 +17,13 @@ Route::get('/addProduct', 'ProductController@add');
 Route::get('/products/{product}', 'ProductController@show');
 Route::get('/categories/{category}', 'CategoryController@index');
 Route::get('/user/cart', 'UserController@cart');
-Route::get('/user/cart/remove/{rowId}', 'UserController@remove');
-Route::get('/user/cart/reset', 'UserController@reset');
+Route::get('/user/cart/remove/{rowId}', 'UserController@removeCart');
+Route::get('/user/cart/reset', 'UserController@resetCart');
 Route::get('/products/addCart/{product_id}', 'UserController@addCart');
+Route::get('/user/like', 'UserController@like');
+Route::get('/user/like/remove/{rowId}', 'UserController@removeLike');
+Route::get('/user/like/reset', 'UserController@resetLike');
+Route::get('/products/addLike/{product_id}', 'UserController@addLike');
 
 Route::post('/addProduct', 'ProductController@store');
 Auth::routes();
