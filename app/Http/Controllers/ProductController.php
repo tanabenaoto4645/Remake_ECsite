@@ -47,4 +47,27 @@ class ProductController extends Controller
         return redirect('/products/'.$product->id);
     }
     
+    //商品編集
+    public function edit(Product $product, Category $category)
+    {
+        return view('edit')->with(['product' => $product, 'categories' => $category->get()]);
+    }
+    //商品更新
+    public function update(Request $request, Product $product)
+    {
+        $input = $request['product'];
+        $product->fill($input);
+
+        //s3アップロード開始
+        $image = $request->file('image');
+        // バケットの`product`フォルダへアップロード
+        $path = Storage::disk('s3')->putFile('products', $image, 'public');
+        // アップロードした画像のフルパスを取得
+        $product->image_path = Storage::disk('s3')->url($path);
+        
+        $product->save();
+
+        return redirect('/products/'.$product->id);
+    }
+    
 }

@@ -14,8 +14,8 @@
     </head>
     <body>
         <h1>n rebuilding</h1>
-        <div class='products'>
-        <div class='product'>
+            <div class='product'>
+                <p class="edit">[<a href="/products/{{ $product->id }}/edit">商品編集</a>]</p>
                 <h2 class='image'>
                     @if ($product->image_path)
                         <!-- 画像を表示 -->
