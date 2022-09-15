@@ -66,6 +66,8 @@ class UserController extends Controller
         Cart::instance('like')->remove($rowId);
         return redirect('/user/like');
     }
+    
+    
 }
 
 

@@ -40,7 +40,28 @@
                         <td></td>
                         <td class="uk-text-large" style="text-align:right;">合計</td>
                         <td class="uk-text-large">{{$total}}円</td>
-                        <td><a href="/payment">決済</a></td>
+                        <td>
+                            <form action="/paymentComplete">
+                            <!--<form action="{{ asset('charge') }}" method="POST">-->
+                                {{ csrf_field() }}
+                                    <script
+                                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="{{ env('STRIPE_KEY') }}"
+                                        data-amount="{{$total}}"
+                                        data-name="nrebuilding"
+                                        data-label="決済をする"
+                                        data-description="Online course about integrating Stripe"
+                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                        data-locale="auto"
+                                        data-currency="JPY">
+                                    </script>
+                                    <input type="hidden" name="amount" value="{{$total}}">
+                                    @foreach($carts as $cart)
+                                    <input type="hidden" name="id[]" value="{{$cart->id}}">
+                                    <input type="hidden" name="row_id[]" value="{{$cart->rowId}}">
+                                    @endforeach
+                            </form>
+                        </td>
                     </tr>
                     <tr>
                         <td></td>

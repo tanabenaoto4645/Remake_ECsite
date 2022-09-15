@@ -21,9 +21,9 @@
             @foreach($products as $product)
             <div class='product'>
                 <h2 class='image'>
-                    @if ($product->image_path)
+                    @if ($product->image_path_1)
                         <!-- 画像を表示 -->
-                        <img src="{{ $product->image_path }}">
+                        <img src="{{ $product->image_path_1 }}" width="50" height="50">
                     @endif
                 </h2>
                 <h3 class='name'>

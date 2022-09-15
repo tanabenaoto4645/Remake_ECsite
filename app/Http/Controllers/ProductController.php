@@ -36,11 +36,24 @@ class ProductController extends Controller
         $product->fill($input);
 
         //s3アップロード開始
-        $image = $request->file('image');
-        // バケットの`product`フォルダへアップロード
-        $path = Storage::disk('s3')->putFile('products', $image, 'public');
-        // アップロードした画像のフルパスを取得
-        $product->image_path = Storage::disk('s3')->url($path);
+        $images = $request->file('image');
+        
+        $disk = Storage::disk('s3');
+        $i = 1;
+        foreach ( $images as $image) {
+            $path = $disk->putFile('products', $image, 'public');
+            $product->{"image_path_"."$i"} = $disk->url($path);
+            $i++;
+        }
+        
+        // //s3アップロード開始
+        // $image = $request->file('image');
+        // // バケットの`products`フォルダへアップロード
+        // $path = Storage::disk('s3')->putFile('products', $image, 'public');
+        // // アップロードした画像のフルパスを取得
+        // $i=1;
+        // $product->{"image_path_"."$i"} = Storage::disk('s3')->url($path);
+
         
         $product->save();
         

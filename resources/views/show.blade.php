@@ -17,10 +17,12 @@
             <div class='product'>
                 <p class="edit">[<a href="/products/{{ $product->id }}/edit">商品編集</a>]</p>
                 <h2 class='image'>
-                    @if ($product->image_path)
-                        <!-- 画像を表示 -->
-                        <img src="{{ $product->image_path }}">
-                    @endif
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($product->{"image_path_"."$i"})
+                            <!-- 画像を表示 -->
+                            <img src="{{ $product->{"image_path_"."$i"} }}" width=50, height=50>
+                        @endif
+                    @endfor
                 </h2>
                 <h3 class='name'>
                     <a href="/product/{{$product->id}}">{{$product->name}}</a>

@@ -22,16 +22,14 @@ class CreateUsersTable extends Migration
             // $table->rememberToken();
             // $table->timestamps();
             
-            //オリジナル
             $table->increments('id');
             $table->string('name', 50);
             $table->string('email', 50);
-            $table->string('phonenumber');
-            $table->string('adress', 100);
-            $table->date('birthday');
+            $table->string('phonenumber')->nullable();
+            $table->string('adress', 100)->nullable();
+            $table->date('birthday')->nullable();
             $table->string('password');
             $table->integer('admin')->nullable();
-            //付け加え
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

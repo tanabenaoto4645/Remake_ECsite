@@ -25,8 +25,14 @@
             
             <div class="title">
                 <h2>写真</h2>
-                <input type="file" name="image">
-                {{ csrf_field() }}
+                <!--<input type="file" name="image">-->
+                <!--{{ csrf_field() }}-->
+                <div>
+                    <input type="file" name="image[]" multiple >
+                </div>
+                @if ($errors->has('image') || $errors->has('image.*') )
+                    <div class="alert alert-danger">{{ $errors->first('image') . $errors->first('image.*') }}</div>
+                @endif
             </div>
             
             <div class="category">

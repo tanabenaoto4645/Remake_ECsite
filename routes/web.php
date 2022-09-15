@@ -25,6 +25,8 @@ Route::get('/user/like', 'UserController@like');
 Route::get('/user/like/remove/{rowId}', 'UserController@removeLike');
 Route::get('/user/like/reset', 'UserController@resetLike');
 Route::get('/products/addLike/{product_id}', 'UserController@addLike');
+Route::get('/paymentComplete', 'PaymentController@payment')->name('payment');
+Route::get('/complete', 'PaymentController@complete')->name('complete');
 
 Route::post('/addProduct', 'ProductController@store');
 Route::put('/products/{product}', 'ProductController@update');
