@@ -5,13 +5,14 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword as CanResetPassword;
 use Laravel\Cashier\Billable;
 
 
 class User extends Authenticatable
 {
     use Notifiable;
-    // use CanResetPassword;
+    use CanResetPassword;
     use Billable;
 
     /**

@@ -49,6 +49,8 @@
                                         data-key="{{ env('STRIPE_KEY') }}"
                                         data-amount="{{$total}}"
                                         data-name="nrebuilding"
+                                        data-billingAddress=true
+                                        data-shippingAddress=true
                                         data-label="決済をする"
                                         data-description="Online course about integrating Stripe"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"

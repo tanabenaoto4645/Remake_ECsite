@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -14,7 +15,7 @@ class ProductController extends Controller
     //一覧表示
     public function index(Product $product)
     {
-        return view('index')->with(['products' => $product->getPaginateByLimit(), 'admin' => Auth::user()->admin]);
+        return view('index')->with(['products' => $product->getPaginateByLimit()]);
     }
     
     //商品詳細ページ
@@ -83,4 +84,8 @@ class ProductController extends Controller
         return redirect('/products/'.$product->id);
     }
     
+    public function orders() {
+        $orders = Order::all();
+        return view('orders')->with(['orders' => $orders]);
+    }
 }

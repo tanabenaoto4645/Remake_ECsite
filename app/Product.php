@@ -5,12 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use App\category;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 class Product extends Model implements Buyable
 {
     
-     protected $fillable = [
+    use SoftDeletes;
+    
+    protected $dates = ['deleted_at'];
+    
+    protected $fillable = [
         'name', 'detail', 'size', 'price', 'category_id'
     ];
     
@@ -24,6 +29,10 @@ class Product extends Model implements Buyable
     public function category()
     {
         return $this->belongsTo('App\Category');
+    }
+    
+    public function order(){
+        return $this->belongsTo('App\Order');
     }
     
     

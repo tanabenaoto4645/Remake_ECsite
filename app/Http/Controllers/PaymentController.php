@@ -1,12 +1,21 @@
 <?php
 
 namespace App\Http\Controllers;
+require '../vendor/autoload.php';
+
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Order;
+use App\Product;
 use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use \Cart;
+
+
 
 class PaymentController extends Controller
 {
@@ -27,6 +36,26 @@ class PaymentController extends Controller
                 'amount' => $request->amount,
                 'currency' => 'jpy'
             ));
+            
+            $dt = new Carbon();
+
+            $i = 0;
+            foreach($request->id as $val){
+            $order = new Order;
+            $order->user_id = Auth::user()->id;
+            $order->product_id = $request->id[$i];
+            $order->status = '1';
+            $order->sales_date = $dt->format('Y-m-d');
+            $order->sales_info = $request->row_id[$i];
+            // $order->userInfo_id = Auth::user()->id;
+            $order->save();
+            $product = Product::find($order->product_id);
+            $product->delete();
+            $i++;
+            }
+        
+            Cart::instance('shopping')->destroy();
+            
 
             return redirect()->route('complete');
         }

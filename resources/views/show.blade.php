@@ -15,7 +15,11 @@
     <body>
         <h1>n rebuilding</h1>
             <div class='product'>
+                @auth
+                @if (auth()->user()->role === 1)
                 <p class="edit">[<a href="/products/{{ $product->id }}/edit">商品編集</a>]</p>
+                @endif
+                @endauth
                 <h2 class='image'>
                     @for ($i = 1; $i <= 5; $i++)
                         @if ($product->{"image_path_"."$i"})

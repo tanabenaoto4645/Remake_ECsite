@@ -14,9 +14,13 @@
     </head>
     <body>
         <h1>n rebuilding</h1>
-        @if($admin==7)
-            <a href="/addProduct">商品追加</a>
+        @auth
+        @if (auth()->user()->admin === 7)
+        <a href="/addProduct">商品追加</a>
         @endif
+        @endauth
+        
+        
         <div class='products'>
             @foreach($products as $product)
             <div class='product'>
