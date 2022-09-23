@@ -24,6 +24,13 @@ class ProductController extends Controller
         return view('show')->with(['product' => $product]);
     }
     
+    //並べ替え
+    public function sortPrducts(Product $product, Request $request)
+    {
+        $condition = $request['condition'];
+        return view('index')->with(['products' => $product->getByOrder($condition)]);
+    }
+    
     //商品追加
     public function add(Category $category)
     {

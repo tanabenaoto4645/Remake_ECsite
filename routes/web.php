@@ -14,6 +14,7 @@
 Route::get('/products', 'ProductController@index');
 Route::get('', 'ProductController@index');
 Route::get('/addProduct', 'ProductController@add')->middleware('admin');
+Route::get('/products/sort', 'ProductController@sortPrducts');
 Route::get('/products/{product}/edit', 'ProductController@edit')->middleware('admin');
 Route::get('/products/{product}', 'ProductController@show');
 Route::get('/categories/{category}', 'CategoryController@index');
