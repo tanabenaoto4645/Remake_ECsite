@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<h2>Admin Orders Page</h2>
+<h2>Orders Page</h2>
 <table class="table">
   <thead class="thead-dark">
     <tr>
@@ -25,4 +25,7 @@
     @endforeach
   </tbody>
 </table>
+<div>
+  <a href="/">ホーム</a>
+</div>
 @endsection

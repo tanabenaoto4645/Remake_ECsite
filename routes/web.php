@@ -19,6 +19,8 @@ Route::get('/products/{product}/edit', 'ProductController@edit')->middleware('ad
 Route::get('/products/{product}', 'ProductController@show');
 Route::get('/categories/{category}', 'CategoryController@index');
 Route::group(['middleware' => ['auth']], function(){
+    Route::get('/user/{user}/edit', 'UserController@edit');
+    Route::get('/user/{user}/orders', 'UserController@orders');
     Route::get('/user/cart', 'UserController@cart');
     Route::get('/user/cart/remove/{rowId}', 'UserController@removeCart');
     Route::get('/user/cart/reset', 'UserController@resetCart');
@@ -29,9 +31,13 @@ Route::group(['middleware' => ['auth']], function(){
     Route::get('/products/addLike/{product_id}', 'UserController@addLike');
     Route::get('/paymentComplete', 'PaymentController@payment')->name('payment');
     Route::get('/complete', 'PaymentController@complete')->name('complete');
+    Route::get('/user/{user}', 'UserController@mypage');
 });
-Route::get('orders', 'ProductController@orders');
+Route::get('orders', 'ProductController@orders')->middleware('admin');
 
 Route::post('/addProduct', 'ProductController@store')->middleware('admin');
 Route::put('/products/{product}', 'ProductController@update');
+Route::put('/user/{user}', 'UserController@update');
 Auth::routes();
+
+Route::get('/mail/send', 'MailController@send');

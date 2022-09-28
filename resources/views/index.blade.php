@@ -2,16 +2,7 @@
 @extends('layouts.app')　　　　　　　　　　　　　　　　　　
 
 @section('content')
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
 
-        <title>n rebuilding</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-    </head>
     <body>
         <h1>n rebuilding</h1>
         <div>
@@ -23,6 +14,7 @@
             @endauth
             <a href="/user/like">お気に入り</a>
             <a href="/user/cart">カート</a>
+            <a href="/user/{{auth()->user()->id}}">マイページ</a>
 
         </div>
         

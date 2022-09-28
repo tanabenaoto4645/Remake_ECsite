@@ -16,7 +16,7 @@
         <h1>n rebuilding</h1>
             <div class='product'>
                 @auth
-                @if (auth()->user()->role === 1)
+                @if (auth()->user()->admin == 7)
                 <p class="edit">[<a href="/products/{{ $product->id }}/edit">商品編集</a>]</p>
                 @endif
                 @endauth
@@ -29,12 +29,13 @@
                     @endfor
                 </h2>
                 <h3 class='name'>
-                    <a href="/product/{{$product->id}}">{{$product->name}}</a>
+                    <a href="/products/{{$product->id}}">{{$product->name}}</a>
                 </h3>
                 <p class ='price'>{{$product->price}}</p>
                 <p class='detail'>{{$product->detail}}</p>
                 <p class='size'>{{$product->size}}</p>
-                <a href="/categories/{{$product->category_id}}/" class="category">{{$product->category->name}}</a><br/>
+                <a href="/categories/{{$product->category_id}}/" class="category">{{$product->category->name}}</a>
+                <p class='likes'>お気に入り数[{{$product->likes}}]</p><br/>
                 <a href="/products/addLike/{{$product->id}}">お気に入りに追加</a>
                 <a href="/products/addCart/{{$product->id}}">カートに追加</a>
                 <!--<p class="edit">[<a href="/products/{{ $product->id }}/edit">edit</a>]</p>-->

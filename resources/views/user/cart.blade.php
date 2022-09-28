@@ -52,7 +52,7 @@
                                         data-billingAddress=true
                                         data-shippingAddress=true
                                         data-label="決済をする"
-                                        data-description="Online course about integrating Stripe"
+                                        data-description="決済情報を入力してください。"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
                                         data-locale="auto"
                                         data-currency="JPY">
