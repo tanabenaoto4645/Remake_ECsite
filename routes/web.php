@@ -18,9 +18,12 @@ Route::get('/products/sort', 'ProductController@sortPrducts');
 Route::get('/products/{product}/edit', 'ProductController@edit')->middleware('admin');
 Route::get('/products/{product}', 'ProductController@show');
 Route::get('/categories/{category}', 'CategoryController@index');
+Route::get('/review', 'ProductController@review');
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/user/{user}/edit', 'UserController@edit');
     Route::get('/user/{user}/orders', 'UserController@orders');
+    Route::get('/user/{user}/postReview', 'UserController@postReview');
+    Route::post('/user/{user}/postReview', 'UserController@storeReview');
     Route::get('/user/cart', 'UserController@cart');
     Route::get('/user/cart/remove/{rowId}', 'UserController@removeCart');
     Route::get('/user/cart/reset', 'UserController@resetCart');

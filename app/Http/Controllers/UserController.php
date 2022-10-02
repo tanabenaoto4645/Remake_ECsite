@@ -7,8 +7,12 @@ use App\Product;
 use App\Buyable;
 use App\User;
 use App\Order;
+use App\Category;
+use App\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Storage;
+
 
 class UserController extends Controller
 {
@@ -109,7 +113,39 @@ class UserController extends Controller
         return view('orders')->with(['orders' => $orders]);
     }
     
+    public function postReview($user) {
+        $orders = Order::where('user_id','=', $user)->get();
+        foreach($orders as $order){
+            $products[] = Product::withTrashed()->find($order->product_id);
+        }
+        return view('postReview')->with(['products' => $products]);
+    }
     
+    //レビュー保存
+    public function storeReview(Review $review, Request $request)
+    {
+        $input = $request['review'];
+        $review->fill($input);
+        $review->category_id = Product::withTrashed()->find($review->product_id)->category_id;
+        $review->user_id = Auth::user()->id;
+
+        //s3アップロード開始
+        $images = $request->file('review');
+        
+        $disk = Storage::disk('s3');
+        $i = 1;
+        if(!is_null($images)){
+        foreach ( $images as $image) {
+            $path = $disk->putFile('reviews', $image, 'public');
+            $review->{"image_path_"."$i"} = $disk->url($path);
+            $i++;
+        }
+        }
+        
+        $review->save();
+        
+        return redirect('/review/');
+    }
 }
 
 

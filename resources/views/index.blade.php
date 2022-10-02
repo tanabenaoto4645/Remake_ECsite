@@ -14,7 +14,9 @@
             @endauth
             <a href="/user/like">お気に入り</a>
             <a href="/user/cart">カート</a>
+            @auth
             <a href="/user/{{auth()->user()->id}}">マイページ</a>
+            @endauth
 
         </div>
         

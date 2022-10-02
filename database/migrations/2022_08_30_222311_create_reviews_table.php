@@ -17,7 +17,11 @@ class CreateReviewsTable extends Migration
             $table->increments('id');
             $table->string('title', 50);
             $table->string('body', 1000);
-            $table->string('image_path')->nullable();
+            $table->string('image_path_1')->nullable();
+            $table->string('image_path_2')->nullable();
+            $table->string('image_path_3')->nullable();
+            $table->string('image_path_4')->nullable();
+            $table->string('image_path_5')->nullable();
             $table->integer('like')->unsigned();//5段階評価
             $table->integer('category_id')->unsigned();
             $table->integer('user_id')->unsigned();

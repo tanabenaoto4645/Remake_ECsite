@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
 use App\Order;
+use  App\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -82,15 +83,15 @@ class ProductController extends Controller
 
         //s3アップロード開始
         $images = $request->file('image');
-        
-        $disk = Storage::disk('s3');
-        $i = 1;
-        foreach ( $images as $image) {
-            $path = $disk->putFile('products', $image, 'public');
-            $product->{"image_path_"."$i"} = $disk->url($path);
-            $i++;
+        if(!is_null($images)){
+            $disk = Storage::disk('s3');
+            $i = 1;
+            foreach ( $images as $image) {
+                    $path = $disk->putFile('products', $image, 'public');
+                    $product->{"image_path_"."$i"} = $disk->url($path);
+                    $i++;
+                }
         }
-        
         $product->save();
 
         return redirect('/products/'.$product->id);
@@ -99,5 +100,10 @@ class ProductController extends Controller
     public function orders() {
         $orders = Order::all();
         return view('orders')->with(['orders' => $orders]);
+    }
+    
+    public function review() {
+        $reviews = Review::all();
+        return view('review')->with(['reviews' => $reviews]);
     }
 }

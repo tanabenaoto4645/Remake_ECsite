@@ -3,16 +3,6 @@
 
 @section('content')
 
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-
-        <title>n rebuilding</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-    </head>
     <body>
         <h1>n rebuilding</h1>
         <form action="/addProduct" method="POST" enctype="multipart/form-data">
@@ -25,8 +15,6 @@
             
             <div class="title">
                 <h2>写真</h2>
-                <!--<input type="file" name="image">-->
-                <!--{{ csrf_field() }}-->
                 <div>
                     <input type="file" name="image[]" multiple >
                 </div>
