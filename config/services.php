@@ -34,5 +34,10 @@ return [
         'model'  => 'User',
         'secret' => env('STRIPE_SECRET'),
     ],
+    
+    'instagram' => [
+        'business_id' => env('INSTAGRAM_BUSINESS_ID'),
+        'access_token' => env('INSTAGRAM_ACCESS_TOKEN'),
+    ],
 
 ];

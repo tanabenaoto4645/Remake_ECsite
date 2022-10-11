@@ -7,3 +7,11 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+.swiper-container {
+  width: 100%;
+  height: 400px;
+}
+.swiper-container img{
+  max-width: 100%;
+  height: auto;
+}

@@ -44,3 +44,4 @@ Route::put('/user/{user}', 'UserController@update');
 Auth::routes();
 
 Route::get('/mail/send', 'MailController@send');
+Route::get('/insta', 'InstaController@index');

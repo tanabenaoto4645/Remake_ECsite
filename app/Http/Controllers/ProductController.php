@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Category;
 use App\Order;
-use  App\Review;
+use App\Review;
+use App\Instagram;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Storage;
@@ -14,9 +15,9 @@ use Storage;
 class ProductController extends Controller
 {
     //一覧表示
-    public function index(Product $product)
+    public function index(Product $product, Instagram $instagramItems)
     {
-        return view('index')->with(['products' => $product->getPaginateByLimit()]);
+        return view('index')->with(['products' => $product->getPaginateByLimit(), 'instagramItems' => $instagramItems->getPosts()]);
     }
     
     //商品詳細ページ
