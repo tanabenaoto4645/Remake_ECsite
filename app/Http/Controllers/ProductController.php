@@ -27,10 +27,15 @@ class ProductController extends Controller
     }
     
     //並べ替え
+    
     public function sortPrducts(Product $product, Request $request)
     {
-        $condition = $request['condition'];
-        return view('index')->with(['products' => $product->getByOrder($condition)]);
+        // $condition = $request['condition'];
+        // return view('index')->with(['products' => $product->getByOrder($condition)]);
+        $condition = $request->input('order', '1');
+
+        $products = $product->getByOrder($condition);
+        return response()->json($products);
     }
     
     //商品追加
@@ -106,5 +111,9 @@ class ProductController extends Controller
     public function review() {
         $reviews = Review::all();
         return view('review')->with(['reviews' => $reviews]);
+    }
+    
+    public function getLikedByUser(Product $product){
+        return response()->json($product->getLikedByUserAttribute());
     }
 }

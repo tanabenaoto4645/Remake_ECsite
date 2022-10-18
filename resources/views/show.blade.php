@@ -1,18 +1,7 @@
 <!DOCTYPE html>
-@extends('layouts.app')　　　　　　　　　　　　　　　　　　
+@extends('layouts.app2')　　　　　　　　　　　　　　　　　　
 
 @section('content')
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-
-        <title>n rebuilding</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-    </head>
-    <body>
         <h1>n rebuilding</h1>
             <div class='product'>
                 @auth
@@ -42,47 +31,53 @@
                 <p class='detail'>{{$product->detail}}</p>
                 <p class='size'>{{$product->size}}</p>
                 <a href="/categories/{{$product->category_id}}/" class="category">{{$product->category->name}}</a>
+                <div id="like">
                 <p class='likes'>お気に入り数[{{$product->likes}}]</p><br/>
-                <a href="/products/addLike/{{$product->id}}"><button id="like">お気に入りに追加</button></a>
-                <script>
-                    
-                </script>
+                <div >
+                    <button v-bind:class="{'liked': toggled === true, 'unliked': toggled === false}" v-on:click="addLike">お気に入りに追加</button>
+                </div>
+                </div>
                 <a href="/products/addCart/{{$product->id}}">カートに追加</a>
-                <!--<p class="edit">[<a href="/products/{{ $product->id }}/edit">edit</a>]</p>-->
             </div>
         <div class='footer'>
             <a href="/products">戻る</a>
         </div>
-    </body>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-    	var mySwiper = new Swiper(".swiper-container", {
-            // オプション設定
-            loop: true, // ループ
-            speed: 300, // 切り替えスピード(ミリ秒)。
-            slidesPerView: 1, // １スライドの表示数
-            spaceBetween: 0, // スライドの余白(px)
-            direction: "horizontal", // スライド方向
-            effect: "fade", // スライド効果 ※ここを変更
+        
+        <style>
+            .liked{
+                color:red;
+            }
+        </style>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script>
+            const API_GET_DATA = '/products/addLike/{{$product->id}}'; // ①
+            const API_GET_DATA_2 = '/products/getLikedByUserAttribute/{{$product->id}}'; // ①
+            if('{{$product->getLikedByUserAttribute()}}'==''){
+                var par_liked = false;
+            }else{
+                var par_liked = true;
+            }
 
-            // スライダーの自動再生設定
-            autoplay: {
-                delay: 3000, // スライドが切り替わるまでの時間(ミリ秒)
-                stopOnLast: false, // 自動再生の停止なし
-                disableOnInteraction: true, // ユーザー操作後の自動再生停止
-            },
+            new Vue({
+                el:'#like',
+                data: {
+                        myclass: '',
+                        toggled: par_liked,
+                },
+                
+                methods: {
+                    addLike:function(){
+                        axios.get(API_GET_DATA)
+                        .then(res => {
+                            this.toggled = !this.toggled;
+                        });
+                    }
+                }
+            })
+            
+            
+            
+        </script>
 
-            // ページネーションを有効化
-            pagination: {
-                el: ".swiper-pagination",
-            },
-
-            // ナビゲーションを有効化
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-        });
-	</script>
-</html>
 @endsection

@@ -75,11 +75,17 @@ class UserController extends Controller
         $product = product::find($product_id);
         if(!Cart::instance('like')->content()->contains('id', $product_id))
         {
-            $product->likes += 1;
+            $product->likes++;
             $product->save();
+            
+            Cart::instance('like')->add($product, 1, ['image_path'=> $product->image_path_1]);
+        }else{
+            $product->likes++;
+            $product->save();
+            
+            $itemId = Cart::instance('like')->content()->where('id', $product_id)->pluck('rowId');
+            Cart::instance('like')->remove($itemId->first());
         }
-        Cart::instance('like')->add($product, 1, ['image_path'=> $product->image_path_1]);
-        
         $likes = Cart::content();
         $user_id = Auth::user()->id;
         return redirect('user/like')->with(compact('likes','user_id'));

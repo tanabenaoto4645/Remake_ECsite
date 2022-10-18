@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exceptions\Handler;
 
 
 class InstaController extends Controller
@@ -39,7 +40,7 @@ class InstaController extends Controller
             }
         } catch (\Exception $exception) {
         // ビジネスアカウント・クリエイターアカウントでない場合は取得できない
-            // Log::error($exception->getMessage());
+            Log::error($exception->getMessage());
         }
 
         return view('instagram.index', compact('instagramItems'));

@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use App\category;
+use Illuminate\Support\Facades\Auth;
+use \Cart;
 use Gloudemans\Shoppingcart\Contracts\Buyable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -47,6 +49,7 @@ class Product extends Model implements Buyable
         return $this->belongsTo('App\Category');
     }
     
+
     public function order(){
         return $this->belongsTo('App\Order');
     }
@@ -66,6 +69,14 @@ class Product extends Model implements Buyable
         return 1;
     }
     
-    
+    //いいね判定
+    public function getLikedByUserAttribute()
+    {
+        if (Auth::guest()) {
+            return false;
+        }
+        
+        return Cart::instance('like')->content()->contains('id', $this->id);
+    }
 
 }

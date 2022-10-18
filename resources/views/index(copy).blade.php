@@ -6,7 +6,11 @@
         <div class="instagram-list swiper-container">
             <h2>最新投稿</h2>
             <div class="swiper-wrapper">
-                
+                <!--@foreach ($instagramItems as $instagramItem)-->
+                <!--    <a href="{{ $instagramItem['link'] }}" target="_blank" class="instagram-list__item swiper-slide">-->
+                <!--        <img src="{{ $instagramItem['img'] }}" alt="{{ $instagramItem['caption'] }}"/>-->
+                <!--    </a>-->
+                <!--@endforeach-->
             </div>
             <div class="swiper-pagination"></div><!-- ナビゲーションボタン（※省略可） -->
 		    <div class="swiper-button-prev"></div>
@@ -71,7 +75,7 @@
         </div>
         
         <h2>API</h2>
-        @{{datas}}
+        @{{order}}
         </div>
 
         
@@ -85,7 +89,6 @@
 
             new Vue({
                 el:'#sort',
-                data: ,
                 data(){
                     
                     return {
