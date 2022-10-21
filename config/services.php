@@ -29,5 +29,15 @@ return [
         'secret' => env('AWS_SECRET_ACCESS_KEY'),
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
+    
+    'stripe' => [
+        'model'  => 'User',
+        'secret' => env('STRIPE_SECRET'),
+    ],
+    
+    'instagram' => [
+        'business_id' => env('INSTAGRAM_BUSINESS_ID'),
+        'access_token' => env('INSTAGRAM_ACCESS_TOKEN'),
+    ],
 
 ];

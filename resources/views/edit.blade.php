@@ -22,8 +22,31 @@
             </div>
             
             <div class="title">
+                <!--<table>-->
+                <!--    <thead><th colspan="5">写真</th></thead>-->
+                <!--    <tbody>-->
+                <!--        <tr>-->
+                <!--            @for ($i = 1; $i <= 5; $i++)-->
+                <!--                @if ($product->{"image_path_"."$i"})-->
+                <!--                    <td><img src="{{ $product->{"image_path_"."$i"} }}" width=50, height=50></td>-->
+                <!--                @endif-->
+                <!--            @endfor-->
+                <!--        </tr>-->
+                <!--        <tr>-->
+                <!--            @for ($i = 1; $i <= 5; $i++)-->
+                <!--                    <td><input type="file" name="image[]" ></td>-->
+                <!--            @endfor-->
+                <!--        </tr>-->
+                <!--    </tbody>-->
+                <!--</table>-->
                 <h2>写真</h2>
-                <input type="file" name="image" >
+                @for ($i = 1; $i <= 5; $i++)
+                    @if ($product->{"image_path_"."$i"})
+                        <a href=""><img src="{{ $product->{"image_path_"."$i"} }}" width=50, height=50></a>
+                    @endif
+                @endfor
+                <br/>
+                <input type="file" name="image[]" multiple>
                 {{ csrf_field() }}
             </div>
             
