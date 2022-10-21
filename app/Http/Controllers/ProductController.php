@@ -28,14 +28,10 @@ class ProductController extends Controller
     
     //並べ替え
     
-    public function sortPrducts(Product $product, Request $request)
+    public function sortPrducts(Product $product, Request $request, Instagram $instagramItems)
     {
-        // $condition = $request['condition'];
-        // return view('index')->with(['products' => $product->getByOrder($condition)]);
-        $condition = $request->input('order', '1');
-
-        $products = $product->getByOrder($condition);
-        return response()->json($products);
+        $condition = $request['condition'];
+        return view('index')->with(['products' => $product->getByOrder($condition), 'instagramItems' => $instagramItems->getPosts()]);
     }
     
     //商品追加

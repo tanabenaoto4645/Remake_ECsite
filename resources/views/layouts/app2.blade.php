@@ -11,14 +11,19 @@
 
     <!-- Scripts -->
     <!--<script src="{{ asset('js/index.js') }}" defer></script>-->
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.15.10/dist/js/uikit-icons.min.js"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.6/css/uikit.min.css" />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="https://unpkg.com/swiper/swiper-bundle.min.css" rel="stylesheet">
 
 </head>
 <body>
@@ -51,16 +56,17 @@
                                 </li>
                             @endif
                         @else
-                            <!--<li class="nav-item dropdown">-->
-                            <!--    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>-->
-                            <!--        {{ Auth::user()->name }} <span class="caret"></span>-->
-                            <!--    </a>-->
-                            <!--</li>-->
                             <li class="nav-item">
-                                <a class="nav-link" href="/user">{{ Auth::user()->name }}さん</a>
+                                <a class="nav-link" href="/user/{{auth()->user()->id}}">マイページ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                <a class="nav-link" href="/user/like'">お気に入り</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/user/cart">カート</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
@@ -76,9 +82,11 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
+        <div class="contents wrapper">
+            <main class="py-4 main_contents">
+                @yield('content')
+            </main>
+        </div>
     </div>
 </body>
 </html>

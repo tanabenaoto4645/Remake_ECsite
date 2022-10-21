@@ -1,28 +1,29 @@
 <!DOCTYPE html>
-@extends('layouts.app2')　　　　　　　　　　　　　　　　　　
+@extends('layouts.app2')
 
 @section('content')
-        <h1>n rebuilding</h1>
             <div class='product'>
                 @auth
                 @if (auth()->user()->admin == 7)
                 <p class="edit">[<a href="/products/{{ $product->id }}/edit">商品編集</a>]</p>
                 @endif
                 @endauth
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                    @for ($i = 1; $i <= 5; $i++)
-                        @if ($product->{"image_path_"."$i"})
-                            <!-- 画像を表示 -->
-                            <div class="swiper-slide">
-                                <img src="{{ $product->{"image_path_"."$i"} }}" >
-                            </div>
-                        @endif
-                    @endfor
+                <div uk-slideshow="slide">
+                    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
+                       <ul class="uk-slideshow-items">
+                            @for ($i = 1; $i <= 5; $i++)
+                                @if ($product->{"image_path_"."$i"})
+                                    <!-- 画像を表示 -->
+                                    <li>
+                                        <img src="{{ $product->{"image_path_"."$i"} }}" alt="" />
+                                    </li>
+                                @endif
+                            @endfor
+                        </ul>
+                        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
                     </div>
-                    <div class="swiper-pagination"></div><!-- ナビゲーションボタン（※省略可） -->
-		            <div class="swiper-button-prev"></div>
-		            <div class="swiper-button-next"></div><!-- スクロールバー（※省略可） -->
+                    <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
                 </div>
                 <h3 class='name'>
                     <a href="/products/{{$product->id}}">{{$product->name}}</a>
