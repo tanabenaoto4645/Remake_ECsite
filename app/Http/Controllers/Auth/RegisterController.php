@@ -72,7 +72,7 @@ class RegisterController extends Controller
     {
         $name = $data['name'];
         $email = $data['email'];
-        // Mail::send(new RegisterMail($name, $email));
+        Mail::send(new RegisterMail($name, $email));
         
         return User::create([
             'name' => $data['name'],

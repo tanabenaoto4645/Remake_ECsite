@@ -14,11 +14,10 @@
 Route::get('/products', 'ProductController@index');
 Route::get('', 'ProductController@index');
 Route::get('/addProduct', 'ProductController@add')->middleware('admin');
-Route::get('/products/sort', 'ProductController@sortPrducts');
-Route::post('/products/sort', 'ProductController@sortPrducts');
+Route::get('/products/sort', 'ProductController@sortProducts');
+Route::get('/products/category/{category}', 'CategoryController@index');
 Route::get('/products/{product}/edit', 'ProductController@edit')->middleware('admin');
 Route::get('/products/{product}', 'ProductController@show');
-Route::get('/categories/{category}', 'CategoryController@index');
 Route::get('/review', 'ProductController@review');
 Route::group(['middleware' => ['auth']], function(){
     Route::get('/user/{user}/edit', 'UserController@edit');

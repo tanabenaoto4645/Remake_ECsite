@@ -5,10 +5,9 @@
 注文の発送準備を行っております。商品が発送されましたら、Eメールにてお知らせいたします。
 
 
-
-￣￣￣￣￣￣￣￣￣
-▼マイページ / 登録情報の確認・変更はこちら
-<!--https:-->
-
-▼お問い合わせ（カスタマーサポートセンター）
-<!--https:-->
+￣￣￣￣￣￣￣￣￣<br/>
+▼HP/オンラインショップ<br/>
+https://nrebuilding-ecsite.herokuapp.com/<br/>
+<br/>
+▼お問い合わせ<br/>
+https://nrebuilding-ecsite.herokuapp.com/contact<br/>

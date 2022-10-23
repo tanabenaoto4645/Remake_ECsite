@@ -13,8 +13,9 @@
         "fideloper/proxy": "^4.4",
         "laravel/cashier": "*",
         "laravel/framework": "6.*",
-        "stripe/stripe-php": "*",
-        "laravelcollective/html": "6.x"
+        "laravelcollective/html": "6.x",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "stripe/stripe-php": "*"
     },
     "require-dev": {
         "facade/ignition": "^1.16.15",

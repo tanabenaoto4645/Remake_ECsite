@@ -15,9 +15,9 @@ use Storage;
 class ProductController extends Controller
 {
     //一覧表示
-    public function index(Product $product, Instagram $instagramItems)
+    public function index(Product $product, Instagram $instagramItems, Category $category)
     {
-        return view('index')->with(['products' => $product->getPaginateByLimit(), 'instagramItems' => $instagramItems->getPosts()]);
+        return view('index')->with(['products' => $product->getPaginateByLimit(), 'instagramItems' => $instagramItems->getPosts(), 'categories' => $category->get()]);
     }
     
     //商品詳細ページ
@@ -28,10 +28,10 @@ class ProductController extends Controller
     
     //並べ替え
     
-    public function sortPrducts(Product $product, Request $request, Instagram $instagramItems)
+    public function sortProducts(Product $product, Request $request, Instagram $instagramItems, Category $category)
     {
         $condition = $request['condition'];
-        return view('index')->with(['products' => $product->getByOrder($condition), 'instagramItems' => $instagramItems->getPosts()]);
+        return view('index')->with(['products' => $product->getByOrder($condition), 'instagramItems' => $instagramItems->getPosts(), 'categories' => $category->get()]);
     }
     
     //商品追加

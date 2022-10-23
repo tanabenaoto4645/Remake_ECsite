@@ -31,7 +31,7 @@
                 <p class ='price'>{{$product->price}}</p>
                 <p class='detail'>{{$product->detail}}</p>
                 <p class='size'>{{$product->size}}</p>
-                <a href="/categories/{{$product->category_id}}/" class="category">{{$product->category->name}}</a>
+                <a href="products/category/{{$product->category_id}}/" class="category">{{$product->category->name}}</a>
                 <div id="like">
                 <p class='likes'>お気に入り数[{{$product->likes}}]</p><br/>
                 <div >

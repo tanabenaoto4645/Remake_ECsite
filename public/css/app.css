@@ -10968,3 +10968,38 @@ a.text-dark:focus {
   }
 }
 
+/*footer*/
+footer {
+  margin-top: 100px;
+  padding: 30px;
+  text-align: center;
+  background-color: #ffffff;
+  color: #000000;
+}
+
+footer ul {
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  /* display: flex;
+  justify-content: space-around; */
+  /* list-style-type: none; */
+}
+
+footer ul li {
+  display: inline-block;
+  margin: 5px;
+}
+
+footer ul li a {
+  color: #000000;
+  text-decoration: none;
+}
+
+footer ul li a:hover,
+footer ul li a:active {
+  opacity: .7;
+}
+
+small {
+  font-size: 0.7rem;
+}

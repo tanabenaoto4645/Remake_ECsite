@@ -7,22 +7,34 @@
         <div class="instagram-list swiper-container">
             @if($instagramItems != null)
             <div class="uk-card uk-card-default uk-card-body" style="z-index: 980;text-align:center;" uk-sticky><h2>最新投稿</h2></div>
-            <div class="swiper-wrapper">
-                @foreach ($instagramItems as $instagramItem)
-                    <a href="{{ $instagramItem['link'] }}" target="_blank" class="instagram-list__item swiper-slide">
-                        <img src="{{ $instagramItem['img'] }}" alt="{{ $instagramItem['caption'] }}"/>
-                    </a>
-                @endforeach
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
+                <ul class="uk-slideshow-items" style="height:1000px;">
+                    <li>
+                        <div class="uk-child-width-1-3@s uk-grid-match" uk-grid>
+                            @foreach($instagramItems as $instagramItem)
+                                <div>
+                                    <div  class="uk-card uk-card-default">
+                                        <a href="{{ $instagramItem['link'] }}">
+                                            <div class="uk-card-media-top"><img src="{{ $instagramItem['img'] }}" alt="insta_image"></div>
+                                            <div class="uk-card uk-card-default uk-card-body uk-grid-margin">
+                                                <p style="overflow: hidden;text-overflow: ellipsis;height: 100x;">{{ $instagramItem['caption'] }}</p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </li>
+                </ul>
+                <a class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+                <a class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
             </div>
-            <div class="swiper-pagination"></div><!-- ナビゲーションボタン（※省略可） -->
-		    <div class="swiper-button-prev"></div>
-		    <div class="swiper-button-next"></div><!-- スクロールバー（※省略可） -->
 		    @endif
         </div>
+        
+        
     </section>
     <section id="administer-contents" class="new-item uk-background-muted" style="padding-bottom:100px;">
-        <div class="uk-card uk-card-default uk-card-body" style="z-index: 980;text-align:center;" uk-sticky><h2>商品</h2></div>
-        <div>
             @auth
             @if (auth()->user()->admin === 7)
             <a href="/addProduct">商品追加</a>
@@ -31,7 +43,8 @@
             @endauth
         </div>
     </section>
-    <section id="products">
+    <section id="products" class="uk-background-muted">
+        <div class="uk-card uk-card-default uk-card-body" style="z-index: 980;text-align:center;" uk-sticky><h2>商品</h2></div>
         <div>
             <form action="/products/sort" method="GET">
                 <select name="condition">
@@ -46,21 +59,24 @@
             </form>
         </div>
         
+        
+        <div class="uk-child-width-1-3@s uk-grid-match" uk-grid="masonry: true">
         @foreach($products as $product)
-        <div class="uk-child-width-1-2@m" uk-grid>
             <div>
-                <a href="/products/{{$product->id}}" class="uk-card uk-card-default">
+            <div  class="uk-card uk-card-default">
+                <a href="/products/{{$product->id}}">
                     <div class="uk-card-media-top">
-                        <img src="{{ $product->image_path_1 }}" width="1800" height="1200" alt="product_image">
+                        <img src="{{ $product->image_path_1 }}" alt="product_image" width="100%" height="100px" style="object-fit:cover;">
                     </div>
-                    <div class="uk-card-body">
+                    <div class="uk-card uk-card-default uk-card-body uk-grid-margin">
                         <h3 class="uk-card-title">{{$product->name}}</h3>
-                        <p>￥{{$product->price}}</p>
+                        <p style="overflow: hidden;text-overflow: ellipsis;height: 100x;">￥{{$product->price}}</p>
                     </div>
                 </a>
             </div>
-        </div>
+            </div>
         @endforeach
+        </div>
         
     </section>
         <div class='paginate'>

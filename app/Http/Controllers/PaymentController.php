@@ -56,7 +56,7 @@ class PaymentController extends Controller
         
             Cart::instance('shopping')->destroy();
             
-            // Mail::send(new PaymentCompleteMail($request->stripeName, $request->stripeEmail));
+            Mail::send(new PaymentCompleteMail($request->stripeName, $request->stripeEmail));
 
             return redirect()->route('complete');
         }

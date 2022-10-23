@@ -45,6 +45,17 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" >カテゴリ</a>
+                                <div uk-dropdown="pos: bottom-right; boundary: !.boundary; shift: false; flip: false">
+                                    <ul class="uk-nav uk-dropdown-nav">
+                                        <li><a class="nav-link" href="/products">ALL</a></li>
+                                        <li><a class="nav-link" href="/products/category/1">フレア</a></li>
+                                        <li><a class="nav-link" href="/products/category/2">ワイド</a></li>
+                                        <li><a class="nav-link" href="/products/category/3">その他</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -60,7 +71,7 @@
                                 <a class="nav-link" href="/user/{{auth()->user()->id}}">マイページ</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/user/like'">お気に入り</a>
+                                <a class="nav-link" href="/user/like">お気に入り</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/user/cart">カート</a>
@@ -87,6 +98,15 @@
                 @yield('content')
             </main>
         </div>
+        
+        <footer>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/information">INFORMATION</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+            </ul>
+            <small>&copy; 2022 nrebuilding</small>
+        </footer>
     </div>
 </body>
 </html>
