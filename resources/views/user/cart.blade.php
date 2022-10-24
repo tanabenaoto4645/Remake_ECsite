@@ -28,7 +28,7 @@
                     @foreach($carts as $cart)
                         <tr>
                             <td><img src="{{$cart->options->image_path}}" width="50" height="50"></td>
-                            <td>{{$cart->name}}</td>
+                            <td><a href="/products/{{$cart->id}}">{{$cart->name}}</a></td>
                             <td>{{$cart->price}}円</td>
                             <td><a href="/user/cart/remove/{{$cart->rowId}}"><button class="uk-button uk-button-danger uk-button">削除</button></a></td>
                         </tr>
@@ -49,8 +49,8 @@
                                         data-key="{{ env('STRIPE_KEY') }}"
                                         data-amount="{{$total}}"
                                         data-name="nrebuilding"
-                                        data-billingAddress=true
-                                        data-shippingAddress=true
+                                        data-billing-address=true
+                                        data-shipping-address=true
                                         data-label="決済をする"
                                         data-description="決済情報を入力してください。"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png"

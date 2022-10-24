@@ -80,7 +80,7 @@ class UserController extends Controller
             
             Cart::instance('like')->add($product, 1, ['image_path'=> $product->image_path_1]);
         }else{
-            $product->likes++;
+            $product->likes--;
             $product->save();
             
             $itemId = Cart::instance('like')->content()->where('id', $product_id)->pluck('rowId');

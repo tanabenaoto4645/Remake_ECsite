@@ -1,78 +1,66 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+## アプリ名
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+「nrebuilding ecsite」
 
-## About Laravel
+## 概要
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+私がオリジナルで作成したリメイク古着を販売するためのECサイトです。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## URL
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+https://nrebuilding-ecsite.herokuapp.com/
 
-## Learning Laravel
+テストアカウント  
+メール：testUser@example.com  
+パスワード：11111111
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 作成背景
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+もともとフリマサイトで、作成したリメイク古着を販売していましたが、フリマサイトでは「中古、安く」というイメージを持たれる場合が多いかと思います。オリジナルで作成したものを販売する場合、フリマサイトのイメージに引っ張られイメージダウンしかねないと考え、自らのサイトを作成しようと考えました。
 
-## Laravel Sponsors
+## 使用言語
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+* 言語
+    * PHP
+    * HTML
+    * CSS
+    * JavaScript
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+* フレームワーク
+    * Laravel
+    * Vue
+    * UIkit
 
-## Contributing
+## 工夫点
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* 決済機能の導入（現段階ではテストモード）
+    * Stripeを利用し、クレジットカードでの決済機能を導入しました。
 
-## Code of Conduct
+*  非同期処理でのお気に入り機能
+    * お気に入り機能を非同期処理にして、ページ更新しなくてもお気に入り機能が動くようにしました。
+    * またその際、お気に入りの有無により、ページ更新しなくてもボタンの色が変更されるようにしました。
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## 改善したい点と追加したい機能
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* FatControllerの修正 
+* UIの調整
+* 商品購入後のキャンセル機能  
+* 商品のキーワード検索機能
+* 非同期での並び替え機能
 
-## License
+## 利用方法
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<!--１．トップページから商品を選びます。  -->
+<!--<img width="500" alt="index" src="https://user-images.githubusercontent.com/87349101/144749182-f133c053-8b69-45d4-add5-eed21f066312.JPG">  -->
+
+<!--２．商品詳細画面で個数を選択し「カートに追加」ボタンを押します。  -->
+<!--<img width="500" alt="show" src="https://user-images.githubusercontent.com/87349101/144749190-abe7f254-ed29-4b9a-8482-a19f8bd51b8f.JPG">  -->
+
+<!--３．カート画面で内容を確認し「予約を確定する」ボタンを押します。  -->
+<!--<img width="500" alt="index" src="https://user-images.githubusercontent.com/87349101/144749191-6a5b6a76-3fbf-406a-9793-14128398027d.JPG">  -->
+
+４．予約が確定され、予約番号が発行されます。  
+また、登録メールアドレスに予約番号と内容の確認メールが届きます。  
+<!--<img width="500" alt="index" src="https://user-images.githubusercontent.com/87349101/144749192-6af9a937-ed47-4bae-85a9-e9f40dc03045.JPG">  -->
+<!--<img width="500" alt="index" src="https://user-images.githubusercontent.com/87349101/144749193-42292dbd-0fd5-4b06-9e48-3f1cb9d31d3d.JPG">  -->

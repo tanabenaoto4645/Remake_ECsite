@@ -11003,3 +11003,18 @@ footer ul li a:active {
 small {
   font-size: 0.7rem;
 }
+
+.brand_intro {
+  margin-top: 100px;
+  padding: 30px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.brand_intro h1{
+  color: #ffffff;
+}
+
+.brand_intro h2{
+  color: #ffffff;
+}

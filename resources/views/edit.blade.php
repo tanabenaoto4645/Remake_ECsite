@@ -1,15 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
+@extends('layouts.app2')　　　　　　　　　　　　　　　　　　
 
-        <title>blog</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-
-    </head>
-    <body>
+@section('content')
     <h1 class="title">編集画面</h1>
     <div class="content">
         <form action="/products/{{ $product->id }}" method="POST" enctype="multipart/form-data">
@@ -83,8 +75,8 @@
             <input type="submit" value="保存">
         </form>
     </div>
-    </body>
-    <footer>
-        <a href="/products">戻る</a>
-    </footer>
-</html>
+    
+    <a href="/products">戻る</a>
+    
+
+@endsection

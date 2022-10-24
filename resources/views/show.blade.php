@@ -2,48 +2,75 @@
 @extends('layouts.app2')
 
 @section('content')
-            <div class='product'>
-                @auth
-                @if (auth()->user()->admin == 7)
-                <p class="edit">[<a href="/products/{{ $product->id }}/edit">商品編集</a>]</p>
-                @endif
-                @endauth
-                <div uk-slideshow="slide">
-                    <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1">
-                       <ul class="uk-slideshow-items">
+    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" uk-grid>
+        <div class="uk-card-media-left uk-cover-container " uk-slideshow="slide" >
+                    <div class="uk-position-relative uk-visible-toggle uk-dark " tabindex="-1" >
+                        <ul class="uk-slideshow-items uk-height-large">
                             @for ($i = 1; $i <= 5; $i++)
                                 @if ($product->{"image_path_"."$i"})
                                     <!-- 画像を表示 -->
                                     <li>
-                                        <img src="{{ $product->{"image_path_"."$i"} }}" alt="" />
+                                        <img src="{{ $product->{"image_path_"."$i"} }}" alt="product_image" class="uk-height-1-1 uk-align-center"/>
                                     </li>
                                 @endif
                             @endfor
                         </ul>
-                        <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-                        <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+                        <a class="uk-position-center-left uk-position-small uk-hidden-hover uk-background-muted" href="#" uk-slidenav-previous uk-slideshow-item="previous" ></a>
+                        <a class="uk-position-center-right uk-position-small uk-hidden-hover uk-background-muted" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
                     </div>
                     <ul class="uk-slideshow-nav uk-dotnav uk-flex-center uk-margin"></ul>
-                </div>
-                <h3 class='name'>
-                    <a href="/products/{{$product->id}}">{{$product->name}}</a>
-                </h3>
-                <p class ='price'>{{$product->price}}</p>
-                <p class='detail'>{{$product->detail}}</p>
-                <p class='size'>{{$product->size}}</p>
-                <a href="products/category/{{$product->category_id}}/" class="category">{{$product->category->name}}</a>
-                <div id="like">
-                <p class='likes'>お気に入り数[{{$product->likes}}]</p><br/>
-                <div >
-                    <button v-bind:class="{'liked': toggled === true, 'unliked': toggled === false}" v-on:click="addLike">お気に入りに追加</button>
-                </div>
-                </div>
-                <a href="/products/addCart/{{$product->id}}">カートに追加</a>
-            </div>
-        <div class='footer'>
-            <a href="/products">戻る</a>
         </div>
-        
+        <!--商品情報-->
+        <div>
+            <div style="margin-left:50px;">
+                <div class="uk-text-large">
+                <p>{{$product->name}}</p>
+                </div>
+                <table class="uk-table uk-table-hover uk-table-divider">
+                    <tbody>
+                        <tr>
+                            <td class="uk-width-small">金額</td>
+                            <td>{{$product->price}}円</td>
+                        </tr>
+                        <tr>
+                            <td class="uk-width-small">サイズ</td>
+                            <td>{{$product->size}}</td>
+                        </tr>
+                        <tr>
+                            <td class="uk-width-small">商品説明</td>
+                            <td>{{$product->detail}}</td>
+                        </tr>
+                        <tr>
+                            <td class="uk-width-small">カテゴリ</td>
+                            <td><a href="/products/category/{{$product->category_id}}/" class="category">{{$product->category->name}}</a></td>
+                        </tr>
+                        <tr>
+                            <td class="uk-width-small">お気に入り数[{{$product->likes}}]</td>
+                            <td><div id="like"><button class="uk-button uk-button-small" v-on:click="addLike"><div v-bind:class="{'liked': toggled === true, 'unliked': toggled === false}">♥</div></button></div></td>
+                        </tr>
+                        <tr>
+                            <td class="uk-width-small">カート</td>
+                            <td>
+                                <div>
+                                    <a href="/products/addCart/{{$product->id}}"><button class="uk-button uk-button-primary">カートに追加</button></a>
+                                </div>
+                            </td>
+                        </tr>
+                        @auth
+                            @if (auth()->user()->admin == 7)
+                                <tr>
+                                    <td class="uk-width-small"></td>
+                                    <td class="edit"><a href="/products/{{ $product->id }}/edit"><button class="uk-button">商品編集</button></a></td>
+                                </tr>
+                            @endif
+                        @endauth
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>        
+
         <style>
             .liked{
                 color:red;

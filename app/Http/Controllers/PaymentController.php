@@ -14,6 +14,7 @@ use Stripe\Charge;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use \Cart;
+use Illuminate\Support\Facades\Mail;
 
 
 

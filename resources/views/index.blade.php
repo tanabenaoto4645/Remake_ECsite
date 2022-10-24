@@ -2,7 +2,13 @@
 @extends('layouts.app2')　　　　　　　　　　　　　　　　　　
 
 @section('content')
-    <div id="main_image"></div>
+    <div id="main_image">
+        <div class="brand_intro">
+        <h1 class="main_title">n rebuilding Online Shop</h1>
+        <h2>【再構築】</h2>
+        <p>古着を解体し、別のフィルターを通し再構築する事で、そこに新たな価値や魅力を創生し、古着や衣服自体の概念を再構築していく事がコンセプト。<br/>古着だけど新しい。新しいけど古着。そんな服作り。</p>
+        </div>
+    </div>
     <section id="info" class="new-item uk-background-muted" style="padding-bottom:100px;">
         <div class="instagram-list swiper-container">
             @if($instagramItems != null)
@@ -60,7 +66,7 @@
         </div>
         
         
-        <div class="uk-child-width-1-3@s uk-grid-match" uk-grid="masonry: true">
+        <div class="uk-child-width-1-3@s uk-grid-match uk-flex" uk-grid="masonry: true">
         @foreach($products as $product)
             <div>
             <div  class="uk-card uk-card-default">
