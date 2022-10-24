@@ -10,30 +10,21 @@
         </div>
     </div>
     <section id="info" class="new-item uk-background-muted" style="padding-bottom:100px;">
-        <div class="instagram-list swiper-container">
+        <div class="instagram-list">
             @if($instagramItems != null)
-            <div class="uk-card uk-card-default uk-card-body" style="z-index: 980;text-align:center;" uk-sticky><h2>最新投稿</h2></div>
-            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow>
-                <ul class="uk-slideshow-items" style="height:1000px;">
-                    <li>
-                        <div class="uk-child-width-1-3@s uk-grid-match" uk-grid>
+            <div class="uk-card uk-card-default uk-card-body" style="z-index: 980;text-align:center;" uk-sticky><h2>Instagram最新投稿</h2></div>
+            <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slider>
+                <ul class="uk-slider-items uk-child-width-1-2 uk-child-width-1-6@m uk-grid" >
                             @foreach($instagramItems as $instagramItem)
-                                <div>
-                                    <div  class="uk-card uk-card-default">
-                                        <a href="{{ $instagramItem['link'] }}">
-                                            <div class="uk-card-media-top"><img src="{{ $instagramItem['img'] }}" alt="insta_image"></div>
-                                            <div class="uk-card uk-card-default uk-card-body uk-grid-margin">
-                                                <p style="overflow: hidden;text-overflow: ellipsis;height: 100x;">{{ $instagramItem['caption'] }}</p>
-                                            </div>
-                                        </a>
+                            <li>
+                                    <div  class="uk-panel">
+                                        <a href="{{ $instagramItem['link'] }}"><img src="{{ $instagramItem['img'] }}" alt="insta_image" height="100"></a>
                                     </div>
-                                </div>
+                            </li>
                             @endforeach
-                        </div>
-                    </li>
                 </ul>
-                <a class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
-                <a class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+                <a class="uk-slidenav-large uk-position-center-left uk-position-small uk-hidden-hover " href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+                <a class="uk-slidenav-large uk-position-center-right uk-position-small uk-hidden-hover " href="#" uk-slidenav-next uk-slider-item="next"></a>
             </div>
 		    @endif
         </div>

@@ -100,7 +100,7 @@
         <footer>
             <ul>
                 <li><a href="/">HOME</a></li>
-                <li><a href="/information">INFORMATION</a></li>
+                <li><a href="https://www.instagram.com/n_rebuilding_mal/">INSTAGRAM</a></li>
                 <li><a href="/contact">CONTACT</a></li>
             </ul>
             <small>&copy; 2022 nrebuilding</small>

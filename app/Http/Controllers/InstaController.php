@@ -30,17 +30,14 @@ class InstaController extends Controller
             foreach ($result['business_discovery']['media']['data'] as $item) {
                 $instagramItems[] = !empty($item['thumbnail_url']) ? [
                     'img' => $item['thumbnail_url'],
-                    'caption' => $item['caption'],
                     'link' => $item['permalink'],
                 ] : [
                     'img' => $item['media_url'],
-                    'caption' => $item['caption'],
                     'link' => $item['permalink'],
                 ];
             }
         } catch (\Exception $exception) {
-        // ビジネスアカウント・クリエイターアカウントでない場合は取得できない
-            Log::error($exception->getMessage());
+            return $exception->getMessage();
         }
 
         return view('instagram.index', compact('instagramItems'));

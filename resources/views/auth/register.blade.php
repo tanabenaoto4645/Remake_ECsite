@@ -39,34 +39,6 @@
                             </div>
                         </div>
                         
-                        <div class="form-group row">
-                            <label for="phonenumber" class="col-md-4 col-form-label text-md-right">{{ __('Phonenumber') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="phonenumber" type="number" class="form-control @error('phonenumber') is-invalid @enderror" name="phonenumber" value="{{ old('phonenumber') }}" required autocomplete="phonenumber">
-
-                                @error('phonenumber')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-                        
-                        {{--住所入力（仮）、一旦テキスト形式にて入力の形--}}
-                        <div class="form-group row">
-                            <label for="adress" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="adress" type="text" class="form-control @error('adress') is-invalid @enderror" name="adress" value="{{ old('adress') }}" required autocomplete="adress">
-
-                                @error('adress')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
                         
                         <div class="form-group row">
                             <label for="birthday" class="col-md-4 col-form-label text-md-right">{{ __('Birthday') }}</label>
