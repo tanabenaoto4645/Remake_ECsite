@@ -16,7 +16,9 @@ https://nrebuilding-ecsite.herokuapp.com/
 
 ## 作成背景
 
-もともとフリマサイトで、作成したリメイク古着を販売していましたが、フリマサイトでは「中古、安く」というイメージを持たれる場合が多いかと思います。オリジナルで作成したものを販売する場合、フリマサイトのイメージに引っ張られイメージダウンしかねないと考え、自らのサイトを作成しようと考えました。
+もともとフリマサイトで、作成したリメイク古着を販売していましたが、フリマサイトでは「中古、安く」というイメージを持たれる場合が多いかと思います。
+オリジナルで作成したものを販売する場合、フリマサイトのイメージに引っ張られイメージダウンしかねないと考え、自らのサイトを作成しようと考えました。
+また、自身のサイトを持ち、間にフリマサイトを挟まないことで、より購入者との距離感が近くなると考えました。
 
 ## 使用言語
 
@@ -36,10 +38,12 @@ https://nrebuilding-ecsite.herokuapp.com/
 * 決済機能の導入（現段階ではテストモード）
     * Stripeを利用し、クレジットカードでの決済機能を導入しました。
 
-*  非同期処理でのお気に入り機能
+* 非同期処理でのお気に入り機能
     * お気に入り機能を非同期処理にして、ページ更新しなくてもお気に入り機能が動くようにしました。
     * またその際、お気に入りの有無により、ページ更新しなくてもボタンの色が変更されるようにしました。
 
+* Instagramの投稿表示機能
+    * Instagram Graph APIを利用し、自身のinstagram投稿を表示できるようにしました。
 
 ## 改善したい点と追加したい機能
 
@@ -51,16 +55,17 @@ https://nrebuilding-ecsite.herokuapp.com/
 
 ## 利用方法
 
-<!--１．トップページから商品を選びます。  -->
-<!--<img width="500" alt="index" src="https://user-images.githubusercontent.com/87349101/144749182-f133c053-8b69-45d4-add5-eed21f066312.JPG">  -->
+１．トップページから商品を選びます。  
+<img width="500" alt="index" src="https://user-images.githubusercontent.com/110731296/197521853-0400471b-1f55-425d-b47a-e5af0b8b28f1.png">  
 
-<!--２．商品詳細画面で個数を選択し「カートに追加」ボタンを押します。  -->
-<!--<img width="500" alt="show" src="https://user-images.githubusercontent.com/87349101/144749190-abe7f254-ed29-4b9a-8482-a19f8bd51b8f.JPG">  -->
+２．商品詳細画面では、お気に入り追加、カートへ追加が行えます。カートへ追加ボタンを押すとカート画面へ遷移します。
 
-<!--３．カート画面で内容を確認し「予約を確定する」ボタンを押します。  -->
-<!--<img width="500" alt="index" src="https://user-images.githubusercontent.com/87349101/144749191-6a5b6a76-3fbf-406a-9793-14128398027d.JPG">  -->
 
-４．予約が確定され、予約番号が発行されます。  
-また、登録メールアドレスに予約番号と内容の確認メールが届きます。  
-<!--<img width="500" alt="index" src="https://user-images.githubusercontent.com/87349101/144749192-6af9a937-ed47-4bae-85a9-e9f40dc03045.JPG">  -->
-<!--<img width="500" alt="index" src="https://user-images.githubusercontent.com/87349101/144749193-42292dbd-0fd5-4b06-9e48-3f1cb9d31d3d.JPG">  -->
+<img width="500" alt="show" src="https://user-images.githubusercontent.com/110731296/197522274-e1eeb10f-e5dc-4d20-b067-116603126f45.png">  
+
+３．カート画面で内容を確認し「決済をする」ボタンを押します。  
+<img width="500" alt="index" src="https://user-images.githubusercontent.com/110731296/197522504-00a46523-833c-4bf4-8a2f-af3504303132.png">  
+
+４．購入者情報、決済情報を入力すると購入が完了します。 
+<img width="500" alt="index" src="https://user-images.githubusercontent.com/110731296/197525616-ebad7a66-e18f-444a-b445-81d03b4de59c.png">  
+<img width="500" alt="index" src="https://user-images.githubusercontent.com/110731296/197525217-7e36d3fb-2a99-4e16-a41e-8b1518990855.png">  

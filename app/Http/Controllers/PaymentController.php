@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Order;
 use App\Product;
+use App\Mail\PaymentCompleteMail;
 use Stripe\Stripe;
 use Stripe\Customer;
 use Stripe\Charge;
