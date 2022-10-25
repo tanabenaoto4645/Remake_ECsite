@@ -56,9 +56,19 @@
             </form>
         </div>
         
-        
-        <div class="uk-child-width-1-3@s uk-grid-match uk-flex" uk-grid="masonry: true">
+        <div uk-filter="target: .js-filter">
+        <ul class="uk-subnav uk-subnav-pill">
+            <li class="uk-active" uk-filter-control><a href="#">All</a></li>
+            <li uk-filter-control="[data-color='onsale']"><a href="#">販売中</a></li>
+            <li uk-filter-control="[data-color='sold']"><a href="#">売り切れ</a></li>
+        </ul>
+        <ul class="js-filter uk-child-width-1-3@s uk-grid-match uk-flex" uk-grid="masonry: true" >
         @foreach($products as $product)
+            @if($product->status == true)
+                <li data-color="onsale">
+            @else
+                <li data-color="sold">
+            @endif
             <div>
             <div  class="uk-card uk-card-default">
                 <a href="/products/{{$product->id}}">
@@ -76,7 +86,9 @@
                 </a>
             </div>
             </div>
+            </li>
         @endforeach
+        </ul>
         </div>
         
     </section>
