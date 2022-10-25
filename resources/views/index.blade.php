@@ -67,7 +67,11 @@
                     </div>
                     <div class="uk-card uk-card-default uk-card-body uk-grid-margin">
                         <h3 class="uk-card-title">{{$product->name}}</h3>
-                        <p style="overflow: hidden;text-overflow: ellipsis;height: 100x;">￥{{$product->price}}</p>
+                        @if($product->status == true)
+                            <p style="overflow: hidden;text-overflow: ellipsis;height: 100x;">￥{{$product->price}}</p>
+                        @else
+                            <p style="overflow: hidden;text-overflow: ellipsis;height: 100x;"><span class="uk-label uk-label-danger">売り切れ</span></p>
+                        @endif
                     </div>
                 </a>
             </div>
@@ -82,12 +86,12 @@
         
         <style>
             #main_image {
-  width: 100%;
-  height: 50vh;
-  background-image: url(https://ec-products-bucket.s3.ap-northeast-1.amazonaws.com/icons/S__5095427.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
+                width: 100%;
+                height: 50vh;
+                background-image: url(https://ec-products-bucket.s3.ap-northeast-1.amazonaws.com/icons/S__5095427.jpg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
+            }
         </style>
 @endsection

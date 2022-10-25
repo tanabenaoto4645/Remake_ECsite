@@ -11,8 +11,8 @@
 https://nrebuilding-ecsite.herokuapp.com/
 
 テストアカウント  
-メール：testUser@example.com  
-パスワード：11111111
+メール：test@test.com  
+パスワード：password
 
 ## 作成背景
 

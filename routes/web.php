@@ -17,6 +17,7 @@ Route::get('/addProduct', 'ProductController@add')->middleware('admin');
 Route::get('/products/sort', 'ProductController@sortProducts');
 Route::get('/products/category/{category}', 'CategoryController@index');
 Route::get('/products/{product}/edit', 'ProductController@edit')->middleware('admin');
+Route::get('/products/{product}/delete', 'ProductController@deleteProduct')->middleware('admin');
 Route::get('/products/{product}', 'ProductController@show');
 Route::get('/review', 'ProductController@review');
 Route::group(['middleware' => ['auth']], function(){

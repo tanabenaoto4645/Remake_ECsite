@@ -26,6 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('image_path_5')->nullable();
             $table->integer('category_id')->unsigned();
             $table->integer('likes');
+            $table->boolean('status')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

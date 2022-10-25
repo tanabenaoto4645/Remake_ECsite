@@ -38,7 +38,15 @@ class UserController extends Controller
     //カート操作
     public function cart(){
         $carts = Cart::instance('shopping')->content();
+        //売り切れたものを取り除く
+        foreach($carts as $content){
+            if(Product::find($content->id)->status == false){
+                Cart::instance('shopping')->remove($content->rowId);
+            }
+        }
         $user_id = Auth::user()->id;
+        $carts = Cart::instance('shopping')->content();
+        
         return view('user/cart')->with(compact('carts','user_id'));
     }
     

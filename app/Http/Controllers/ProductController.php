@@ -46,6 +46,7 @@ class ProductController extends Controller
         $input = $request['product'];
         $product->fill($input);
         $product->likes = 0;
+        $product->status = 1;
 
         //s3アップロード開始
         $images = $request->file('image');
@@ -97,6 +98,13 @@ class ProductController extends Controller
         $product->save();
 
         return redirect('/products/'.$product->id);
+    }
+    
+    //商品削除
+    public function deleteProduct(Product $product)
+    {
+        $product->delete();
+        return redirect("/");
     }
     
     public function orders() {

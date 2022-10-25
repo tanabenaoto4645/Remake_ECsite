@@ -49,10 +49,10 @@ class PaymentController extends Controller
             $order->status = '1';
             $order->sales_date = $dt->format('Y-m-d');
             $order->sales_info = $request->row_id[$i];
-            // $order->userInfo_id = Auth::user()->id;
             $order->save();
             $product = Product::find($order->product_id);
-            $product->delete();
+            $product->status = 0;
+            $product->save();
             $i++;
             }
         

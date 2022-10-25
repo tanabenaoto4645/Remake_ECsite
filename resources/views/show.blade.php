@@ -46,20 +46,26 @@
                         </tr>
                         <tr>
                             <td class="uk-width-small">お気に入り数[{{$product->likes}}]</td>
-                            <td><div id="like"><button class="uk-button uk-button-small" v-on:click="addLike"><div v-bind:class="{'liked': toggled === true, 'unliked': toggled === false}">♥</div></button></div></td>
+                            <td><div id="like"><button class="uk-button uk-button-small" v-on:click="addLike"><div v-bind:class="{'liked': toggled === true, 'unliked': toggled === false}"><span uk-icon="heart"></span></div></button></div></td>
                         </tr>
                         <tr>
                             <td class="uk-width-small">カート</td>
                             <td>
-                                <div>
-                                    <a href="/products/addCart/{{$product->id}}"><button class="uk-button uk-button-primary">カートに追加</button></a>
-                                </div>
+                                @if($product->status == true)
+                                    <div>
+                                        <a href="/products/addCart/{{$product->id}}"><button class="uk-button uk-button-primary">カートに追加</button></a>
+                                    </div>
+                                @else
+                                    <div>
+                                        <span class="uk-label uk-label-danger">売り切れ</span>
+                                    </div>
+                                @endif
                             </td>
                         </tr>
                         @auth
                             @if (auth()->user()->admin == 7)
                                 <tr>
-                                    <td class="uk-width-small"></td>
+                                    <td class="uk-width-small"><a href="/products/{{ $product->id }}/delete"><button class="uk-button">商品削除</button></a></td>
                                     <td class="edit"><a href="/products/{{ $product->id }}/edit"><button class="uk-button">商品編集</button></a></td>
                                 </tr>
                             @endif
