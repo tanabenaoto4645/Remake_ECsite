@@ -26,5 +26,12 @@ class UserSeeder extends Seeder
             'password' => '$2y$10$Rg0WwIXZPJrX1VrB2CdGEux4xsMpRypNoRMPwyzbtLlGi3GvSfbje',
             'admin' => '1'
             ]);
+        
+        User::create([
+            'name' => 'AdminTest User',
+            'email' => 'admintest@test.com',
+            'password' => '$2y$10$Rg0WwIXZPJrX1VrB2CdGEux4xsMpRypNoRMPwyzbtLlGi3GvSfbje',
+            'admin' => '7'
+            ]);
     }
 }
